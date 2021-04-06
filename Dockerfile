@@ -2,8 +2,8 @@ FROM openjdk:8-alpine
 
 LABEL maintainer="kaizawa@newrelic.com"
 
-ARG NR_LICENSEKEY
-ARG NR_APP_NAME
+ARG NR_LICENSEKEY=<replace your license key>
+ARG NR_APP_NAME=nru-fargate-petclinic-app
 
 RUN echo "Now building..." && \
     mkdir /opt/petclinic && \
