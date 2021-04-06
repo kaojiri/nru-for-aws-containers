@@ -14,7 +14,7 @@ ADD *.jar /opt/petclinic
 RUN apk update && \
     apk add sudo && \
     apk add curl && \
-    apk add sed
+    apk add sed && \
     curl -o /opt/newrelic/newrelic.jar https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic.jar && \
     curl -o /opt/newrelic/newrelic.yml https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic.yml && \
     sed -i -e "s/app_name: My Application$/app_name: ${NR_APP_NAME}/" /opt/newrelic/newrelic.yml && \
