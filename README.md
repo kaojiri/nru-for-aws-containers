@@ -10,7 +10,7 @@ Ar first get license key from [New Relic UI](https://one.newrelic.com/launcher/a
 Replace `<replace your license key>` to your license key you getted and save Dockerfile.
 ```yaml
 ARG NR_LICENSEKEY=<replace your license key>
-ARG NR_APP_NAME=nru-fargate-petclinic-app
+ARG NR_APP_NAME=nru-ecs-petclinic-app
 ```
 
 ## Build image and push to ECR registory
@@ -19,9 +19,11 @@ Before build image, check your ECR's URI. You can see from [AWS Management conso
 Execute `docker build` , `tag` and `push` command to push your ECR Registory.  
 
 ```bash
-docker build -t nru-fargate-petclinic-app .
+aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin <replace your acountID>.dkr.ecr.ap-northeast-1.amazonaws.com
 
-docker tag nru-fargate-petclinic-app:latest <your ECR URI>:latest
+docker build -t nru-ecs-petclinic-app .
+
+docker tag nru-ecs-petclinic-app:latest <your ECR URI>:latest
 
 docker push <your ECR URI>:latest:latest
 
